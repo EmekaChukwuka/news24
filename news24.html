@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News24</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="news24.css">
+    <style>
+        header{
+    padding:60px 0 40px;
+    text-align:center;
+    background:red;
+}
+body{
+    margin:0;
+    padding:0;
+    background:#eaeaff;
+}
+*{
+    font-family:Arial, Helvetica, Sans Serif;
+}
+.news{
+    color:blue;
+}
+.w{
+    color:black;
+}
+#more,#more2,#more3,#more5,#more4{
+    display:none;
+}
+#newsbox{
+    width:90%;
+    margin:5% 4%;
+    background:white;
+    border-radius:10px;
+    border:none;
+    text-align:center;
+    padding:60px 0;
+}
+#newsbox button{
+    width:40%;
+    padding:8px 10px;
+    border-radius:5px;
+    border:none;
+    background:red;
+    color:white;
+    margin:10px 24%;
+}
+footer{
+    text-align:center;
+    padding:50px 0;
+    background:white;
+}
+.refresh{
+    width:50%;
+    margin:20px 24%;
+    background:red;
+    padding:9px 10px;
+    border-radius:8px;
+    border:none;
+    color:white;
+}
+.w{
+    color:white;
+}
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to <span class="w">News</span><span class="news">24</span></h1>
+        <p>YOUR HOMEPAGE FOR BREAKING NEWS</p>
+    </header>
+    <div class="breaking">
+        <div id="newsbox">
+            <p id="type"></p>
+       <p id="newsheader"></p>
+       <div id="more">
+           <p>To read more, please visit here: <span id="link"></span></p>
+       <button onclick="readLess()">Read Less</button>
+       </div>
+       <button onclick="readMore()" id="read">Read More</button>
+        </div>
+        
+            <div id="newsbox">
+                <p id="type2"></p>
+       <p id="newsheader2"></p>
+       
+       <div id="more2">
+       <p>To read more, please visit here: <span id="link2"></span></p>
+       <button onclick="readLess2()">Read Less</button>
+       </div>
+       <button onclick="readMore2()" id="read">Read More</button>
+        </div>
+        
+            <div id="newsbox">
+                <p id="type3"></p>
+       <p id="newsheader3"></p>
+       <div id="more3">
+           <p>To read more, please visit here: <span id="link3"></span></p>
+       <button onclick="readLess3()">Read Less</button>
+       </div>
+       <button onclick="readMore3()" id="read">Read More</button>
+        </div>
+        
+             <div id="newsbox">
+                <p id="type4"></p>
+       <p id="newsheader4"></p>
+       <div id="more4">
+       <p id="news"></p>
+           <p>To read more, please visit here: <span id="link4"></span></p>
+       <button onclick="readLess4()">Read Less</button>
+       </div>
+       <button onclick="readMore4()" id="read">Read More</button>
+        </div>
+        
+               <div id="newsbox">
+                <p id="type5"></p>
+       <p id="newsheader5"></p>
+       <div id="more5">
+       <p id="news"></p>
+           <p>To read more, please visit here: <span id="link5"></span></p>
+       <button onclick="readLess5()">Read Less</button>
+       </div>
+       <button onclick="readMore5()" id="read">Read More</button>
+        </div>
+                
+      </div>
+    <button onclick="firstNews()" class="refresh">Refresh Page</button>
+    
+    <footer>
+        <p>This website was made by Emeka Chukwuka.</p>
+        <p>+2347013857358</p>
+        <p><a href=" https://www.facebook.com/profile.php?id=100094620319659">Emeka FX on Facebook</a></p>
+        <p>©2024 Nuel Media. All Rights Reserved</p>
+    </footer>
+    <script>
+        
+     document.addEventListener("DOMContentLoaded",firstNews);
+async function firstNews() {
+let header=document.getElementById("newsheader");
+let header2=document.getElementById("newsheader2");
+let header3=document.getElementById("newsheader3");
+let header4=document.getElementById("newsheader4");
+let header5=document.getElementById("newsheader5");
+let fullNews=document.getElementById("news");
+let type=document.getElementById("type");
+let type2=document.getElementById("type2");
+let type3=document.getElementById("type3");
+let type4=document.getElementById("type4");
+let type5=document.getElementById("type5");
+let link=document.getElementById("link");
+let link2=document.getElementById("link2");
+let link3=document.getElementById("link3");
+let link4=document.getElementById("link4");
+let link5=document.getElementById("link5");
+let random=Math.floor(Math.random()*2000);
+   try{
+   let apiurl=` https://content.guardianapis.com/search?page=${random}&api-key=7b468596-624c-4b59-b409-e0b207a3e725`
+       const response=await fetch(apiurl);
+       if(response.ok) {
+         let data=await response.json();
+        header.innerHTML=data.response.results[0].webTitle;
+        type.innerHTML=data.response.results[0].sectionName;
+        
+        header2.innerHTML=data.response.results[1].webTitle;
+        type2.innerHTML=data.response.results[1].sectionName;   
+        
+     header3.innerHTML=data.response.results[2].webTitle;
+        type3.innerHTML=data.response.results[2].sectionName;
+    
+        header4.innerHTML=data.response.results[3].webTitle;
+        type4.innerHTML=data.response.results[3].sectionName;
+    
+    header5.innerHTML=data.response.results[4].webTitle;
+        type5.innerHTML=data.response.results[4].sectionName;
+    
+    link.innerHTML=data.response.results[0].webUrl;
+    link2.innerHTML=data.response.results[1].webUrl;
+    link3.setAttribute=data.response.results[2].webUrl;
+    link4.innerHTML=data.response.results[3].webUrl;
+    link5.innerHTML=data.response.results[4].webUrl;
+               
+       }else {
+           alert("There was an error, please try again");
+       }
+   }catch(error){
+       alert("To display current news, please connect to the internet or check your internet settings");
+   }
+   
+    
+}
+function readMore() {
+    document.getElementById("more").style.display="block";
+}
+function readMore2() {
+    document.getElementById("more2").style.display="block";
+}
+function readMore3() {
+    document.getElementById("more3").style.display="block";
+}
+function readMore4() {
+    document.getElementById("more4").style.display="block";
+}
+function readMore5() {
+    document.getElementById("more5").style.display="block";
+}
+function readLess() {
+    document.getElementById("more").style.display="none";
+}
+function readLess2() {
+    document.getElementById("more2").style.display="none";
+}
+function readLess3() {
+    document.getElementById("more3").style.display="none";
+}
+function readLess4() {
+    document.getElementById("more4").style.display="none";
+}
+function readLess5() {
+    document.getElementById("more5").style.display="none";
+}
+   
+    </script>
+    <script src="news24.js"></script>
+</body>
+</html>

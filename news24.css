@@ -1,0 +1,54 @@
+header{
+    padding:60px 0 40px;
+    text-align:center;
+    background:red;
+}
+body{
+    margin:0;
+    padding:0;
+    background:#eaeaff;
+}
+*{
+    font-family:Arial, Helvetica, Sans Serif;
+}
+.news{
+    color:blue;
+}
+.w{
+    color:black;
+}
+#more,#more2,#more3,#more5,#more4{
+    display:none;
+}
+#newsbox{
+    width:90%;
+    margin:5% 4%;
+    background:white;
+    border-radius:10px;
+    border:none;
+    text-align:center;
+    padding:60px 0;
+}
+#newsbox button{
+    width:40%;
+    padding:8px 10px;
+    border-radius:5px;
+    border:none;
+    background:red;
+    color:white;
+    margin:10px 24%;
+}
+footer{
+    text-align:center;
+    padding:50px 0;
+    background:white;
+}
+.refresh{
+    width:50%;
+    margin:20px 24%;
+    background:red;
+    padding:9px 10px;
+    border-radius:8px;
+    border:none;
+    color:white;
+}
